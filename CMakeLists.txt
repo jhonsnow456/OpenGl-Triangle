@@ -39,19 +39,26 @@ endif()
 # **************************************************************************************
 
 add_subdirectory(submodules/glfw)
+add_subdirectory(submodules/glad)
 
 # include the adder folder inside the build directory
 target_include_directories(${PROJECT_NAME} 
     PUBLIC submodules/glfw/include 
+)
+target_include_directories(${PROJECT_NAME}
+    PUBLIC submodules/glad/include
 )
 
 # link the lib files inside the Adder folder in the build directory. 
 target_link_directories(${PROJECT_NAME} 
     PUBLIC submodules/glfw/src 
 )
+target_link_directories(${PROJECT_NAME}
+    PUBLIC submodules/glad/src
+)
 
 # In the build directory add the linker file named:libadder.a 
-target_link_libraries(${PROJECT_NAME} glfw)
+target_link_libraries(${PROJECT_NAME} glfw glad)
 
 # install our software in computer
 install(TARGETS ${PROJECT_NAME} DESTINATION bin)
