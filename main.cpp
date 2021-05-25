@@ -1,9 +1,11 @@
 #include <iostream>
+// #include <OPENGLPROJECTConfig.h>
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-int main(int argc, char* argv[]){ 
+int main(int argc, char** argv){ 
         std::cout << "Welcome to code!! " << std::endl;
+        // std::cout << argv[0] << " Version: " << OPENGLPROJECT_VERSION_MAJOR << "." << OPENGLPROJECT_VERSION_MINOR << '\n';
 
         glfwInit(); // initializing the glew
 
@@ -22,20 +24,21 @@ int main(int argc, char* argv[]){
                 return -1;
             }
 
-            glfwMakeContextCurrent(window);
+            glfwMakeContextCurrent(window); // introducing window to current context
 
-                gladLoadGL();
+                gladLoadGL(); // Load glad to configure opengl
                 glViewport(0, 0, 800, 800);
 
                 glClearColor(0.07f, 0.13f, 0.17f, 1.0f); // this is the color stored in the back
                 glClear(GL_COLOR_BUFFER_BIT); // color stored in the foregoround.
                 glfwSwapBuffers(window); // swapping the buffer so as after each rendering our screen get clear
 
+                // while the window is not closed
                 while (!glfwWindowShouldClose(window)){
-                    glfwPollEvents();
+                    glfwPollEvents(); // Take care of all glfwevent
                 }
                 
-            glfwDestroyWindow(window);
+            glfwDestroyWindow(window); // similarly destroying window after use.
 
         glfwTerminate();
 

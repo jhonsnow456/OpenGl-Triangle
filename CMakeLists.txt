@@ -2,12 +2,15 @@
 cmake_minimum_required(VERSION 3.16.3)
 
 # This method is to specify name of our executable file in the build folder
-project(OPENENGLPROJECT)
+project(OPENENGLPROJECT VERSION 1.0)
 
 # This method help us to identify the start point of our file or files which 
 # executables are to be cretaed
 add_executable(${PROJECT_NAME} main.cpp)
 
+# This the progect configuration file which help in building
+# the above mentioned project version. 
+configure_file(OPENGLPROJECTConfig.h.in OPENGLPROJECTConfig.h)
 
 target_include_directories(${PROJECT_NAME} PUBLIC ${PROJECT_BINARY_DIR})
 
